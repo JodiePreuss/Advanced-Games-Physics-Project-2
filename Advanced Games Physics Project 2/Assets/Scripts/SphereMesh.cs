@@ -12,7 +12,8 @@ public class SphereMesh : MonoBehaviour
 
     public int horizontalLines, verticalLines;
     public int radius;
-    //private int[] triangles;
+    private int[] triangles;
+
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class SphereMesh : MonoBehaviour
         mesh.Clear();
 
         mesh.vertices = vertices;
-        //mesh.triangles = triangles;
+        mesh.triangles = triangles;
 
         mesh.RecalculateNormals();
     }
@@ -37,19 +38,38 @@ public class SphereMesh : MonoBehaviour
     {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
 
-        vertices = new Vector3[horizontalLines * verticalLines];
+        vertices = new Vector3[(horizontalLines+1) * (verticalLines+1)];
         int index = 0;
-        for (int m = 0; m < horizontalLines; m++)
+        for (int u = 0; u < horizontalLines; u++)
         {
-            for (int n = 0; n < verticalLines; n++)
+            for (int v = 0; v < verticalLines; v++)
             {
-                float x = Mathf.Sin(Mathf.PI * m / horizontalLines) * Mathf.Cos(2 * Mathf.PI * n / verticalLines);
-                float y = Mathf.Sin(Mathf.PI * m / horizontalLines) * Mathf.Sin(2 * Mathf.PI * n / verticalLines);
-                float z = Mathf.Cos(Mathf.PI * m / horizontalLines);
-                vertices[index++] = new Vector3(x, y, z) * radius;
+                float x = Mathf.Sin(Mathf.PI * u / horizontalLines) * Mathf.Cos(2 * Mathf.PI * v / verticalLines);
+                float y = Mathf.Sin(Mathf.PI * u / horizontalLines) * Mathf.Sin(2 * Mathf.PI * v / verticalLines);
+                float z = Mathf.Cos(Mathf.PI * u / horizontalLines);
+                vertices[index] = new Vector3(x, y, z);
+                index++;
             }
         }
-        mesh.vertices = vertices;
+
+        triangles = new int[6 * (horizontalLines+1) * (verticalLines+1)];
+        int vert = 0;
+        int tris = 0;
+        for (int z = 0; z < verticalLines; z++) {
+            for (int x = 0; x < horizontalLines; x++) {
+
+                triangles[tris + 0] = vert + 0;
+                triangles[tris + 1] = vert + horizontalLines + 1;
+                triangles[tris + 2] = vert + 1;
+                triangles[tris + 3] = vert + 1;
+                triangles[tris + 4] = vert + horizontalLines + 1;
+                triangles[tris + 5] = vert + horizontalLines + 2;
+                vert++;
+                tris += 6;
+            }
+
+        }
+       
     }
 
 
@@ -62,7 +82,7 @@ public class SphereMesh : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             Gizmos.color = Color.black;
-            Gizmos.DrawSphere(transform.TransformPoint(vertices[i]), 0.1f);
+            Gizmos.DrawSphere(transform.TransformPoint(vertices[i]), 0.01f);
         }
     }
 }
