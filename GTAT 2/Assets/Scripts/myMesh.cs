@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Mesh Filter and Mesh Renderer are obligatory!
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 
 public class myMesh : MonoBehaviour
@@ -38,6 +40,8 @@ public class myMesh : MonoBehaviour
     {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
 
+
+        //Creating all the vertices
         vertices = new Vector3[(horizontalLines + 1) * (verticalLines + 1)];
         int index = 0;
         for (int u = 0; u < horizontalLines; u++)
@@ -51,6 +55,8 @@ public class myMesh : MonoBehaviour
                 index++;
             }
         }
+
+        //Make the polygons
 
         //triangles = new int[6 * (horizontalLines + 1) * (verticalLines + 1)];
         //int vert = 0;

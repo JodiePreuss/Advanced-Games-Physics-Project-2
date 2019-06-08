@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Veronika.unity
+    guid: 5b98dcd164a104f2fbc37359b392b684
   m_configObjects: {}
