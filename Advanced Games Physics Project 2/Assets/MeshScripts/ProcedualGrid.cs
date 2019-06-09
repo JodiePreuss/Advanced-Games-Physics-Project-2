@@ -41,10 +41,10 @@ public class ProcedualGrid : MonoBehaviour
                 Vector3 cellOffset = new Vector3(x * cellSize, 0, y * cellSize);
 
                 // Populate the vertices and triangles:
-                vertices[v] = new Vector3(-vertexOffset, 0, -vertexOffset) + cellOffset + gridOffset;
-                vertices[v + 1] = new Vector3(-vertexOffset, 0, vertexOffset) + cellOffset + gridOffset;
-                vertices[v + 2] = new Vector3(vertexOffset, 0, -vertexOffset) + cellOffset + gridOffset;
-                vertices[v + 3] = new Vector3(vertexOffset, 0, vertexOffset) + cellOffset + gridOffset;
+                vertices[v] = new Vector3(-vertexOffset, (x+y)*0.3f, -vertexOffset) + cellOffset + gridOffset;
+                vertices[v + 1] = new Vector3(-vertexOffset, (x + y) * 0.3f, vertexOffset) + cellOffset + gridOffset;
+                vertices[v + 2] = new Vector3(vertexOffset, (x + y) * 0.3f, -vertexOffset) + cellOffset + gridOffset;
+                vertices[v + 3] = new Vector3(vertexOffset, (x + y) * 0.3f, vertexOffset) + cellOffset + gridOffset;
 
                 triangles[t] = v;
                 triangles[t + 1] = triangles[t + 4] = v + 1;

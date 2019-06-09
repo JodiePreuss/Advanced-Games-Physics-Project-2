@@ -39,7 +39,7 @@ public class ContiguousGrid : MonoBehaviour
         {
             for (int y = 0; y <= gridSize; y++)
             {
-                vertices[v] = new Vector3((x + cellSize) - vertexOffset, 0, (y + cellSize) - vertexOffset);
+                vertices[v] = new Vector3((x + cellSize) - vertexOffset, (x + y) * 0.3f, (y + cellSize) - vertexOffset);
                 v++;
             }
         }
