@@ -224,7 +224,8 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_5D14B0A1: {r: 0.9624946, g: 0.6977035, b: 0.06724853, a: 0}
+    - Color_5D14B0A1: {r: 0.9624946, g: 0.6977035, b: 0.06724853, a: 1}
+    - Color_9668E7D1: {r: 0.8509804, g: 0.2588096, b: 0.074509814, a: 1}
     - _BaseColor: {r: 0.8867924, g: 0.27189392, b: 0.27189392, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.8867924, g: 0.27189386, b: 0.27189386, a: 1}
